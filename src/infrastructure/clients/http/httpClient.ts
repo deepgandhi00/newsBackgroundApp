@@ -1,4 +1,4 @@
-// TODO: create axios instance here and change configurations
+// create axios instance here and change configurations
 import axios, {AxiosInstance} from 'axios';
 import { injectable } from 'inversify';
 
@@ -8,7 +8,7 @@ export class HttpClient {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: 'https://jsonplaceholder.typicode.com',
+      baseURL: 'https://fakenews.squirro.com/news/',
     });
   }
 }

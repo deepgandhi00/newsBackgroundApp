@@ -1,9 +1,11 @@
-// TODO: add your public routes
+// Public Routes
 export enum PublicRoutes {
   Splash = 'splash',
+  Home = 'home',
 }
 
-// TODO: add your public routes params types
+// Public Routes Params
 export type PublicRouteParamType = {
   [PublicRoutes.Splash]: undefined;
+  [PublicRoutes.Home]: undefined;
 };

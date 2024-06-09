@@ -1,11 +1,5 @@
-export const TYPE = {
-  POST_API_SERVICE: 'POST_API_SERVICE',
-  POST_API_REPOSITORY: 'POST_API_REPOSITORY',
+// Defined Types for interface dependency
+export const TYPES = {
+  NEWS_SQL_REPOSITORY: Symbol.for('NEWS_SQL_REPOSITORY'),
+  NEWS_API_REPOSITORY: Symbol.for('NEWS_API_REPOSITORY'),
 };
-
-const TYPES = {
-  POST_API_SERVICE: Symbol.for('POST_API_SERVICE'),
-  POST_API_REPOSITORY: Symbol.for('POST_API_REPOSITORY'),
-};
-
-export default TYPES;

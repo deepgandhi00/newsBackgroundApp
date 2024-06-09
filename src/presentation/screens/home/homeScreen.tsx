@@ -1,22 +1,35 @@
-import React, {useEffect} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
-import {Post} from '../../../domain/entities/post/posts.entity';
-import {ResponseModel} from '../../../domain/entities/generics/genericResponseModel.entity';
-import {useInjection} from 'inversify-react';
-import {PostRepository} from '../../../infrastructure/repository/post/postRepository';
-import TYPES from '../../../application/di/types';
-import { useGetPosts } from './hooks/useGetPosts';
+import React from 'react';
+import {FlatList, SafeAreaView, Text, View} from 'react-native';
+import {useCheckIfDataPresent} from './hooks/useCheckIfDataPresent';
+import {commonStyles} from '../../../application/utils/commonStyles';
+import Loader from '../../components/loader/loader';
+import NewsItem from './components/newsItem';
 
+// Home Screen
 const HomeScreen = (): React.ReactElement => {
-  const {posts} = useGetPosts();
+  const {fetchedNews} = useCheckIfDataPresent();
 
-  return (
-    <SafeAreaView>
-      <View>
-        <Text>Home</Text>
-      </View>
-    </SafeAreaView>
-  );
+  if (fetchedNews?.length) {
+    return (
+      <SafeAreaView style={[commonStyles.container]}>
+        <View style={[commonStyles.container]}>
+          <FlatList
+            keyExtractor={item => item.id?.toString() || item.url}
+            data={fetchedNews}
+            renderItem={({item, index}) => {
+              return <NewsItem news={item} />;
+            }}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <SafeAreaView style={[commonStyles.flex1]}>
+        <Loader />
+      </SafeAreaView>
+    );
+  }
 };
 
 export default HomeScreen;

@@ -1,4 +1,4 @@
-// TODO: sample emum definition
+// sample emum definition
 export enum ApiStatus {
   IDLE = <any>'IDLE',
   LOADING = <any>'LOADING',

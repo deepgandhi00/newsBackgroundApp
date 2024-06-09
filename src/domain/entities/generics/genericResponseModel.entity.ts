@@ -1,4 +1,4 @@
-// TODO: generic response model for api responses with status code and data or error
+// generic response model for api responses with status code and data or error
 export class ResponseModel<T> {
   status: number;
   data: T | null;

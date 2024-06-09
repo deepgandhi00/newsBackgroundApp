@@ -1,0 +1,11 @@
+export const TYPE = {
+  POST_API_SERVICE: 'POST_API_SERVICE',
+  POST_API_REPOSITORY: 'POST_API_REPOSITORY',
+};
+
+const TYPES = {
+  POST_API_SERVICE: Symbol.for('POST_API_SERVICE'),
+  POST_API_REPOSITORY: Symbol.for('POST_API_REPOSITORY'),
+};
+
+export default TYPES;

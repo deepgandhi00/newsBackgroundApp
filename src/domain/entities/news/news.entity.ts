@@ -2,17 +2,18 @@
 export class News {
   id?: number;
   author: string;
-  title: string;
-  description: string;
-  url: string;
+  headline: string;
+  abstract: string;
+  article_uri: string;
   image: string;
 
   constructor(model: News) {
     this.id = model.id;
-    this.title = model.title;
+    this.headline = model.headline;
     this.author = model.author;
-    this.description = model.description;
-    this.url = model.url;
-    this.image = '';
+    this.abstract = model.abstract;
+    this.article_uri = model.article_uri;
+    this.image =
+      'https://nypost.com/wp-content/uploads/sites/2/2024/04/79582612.jpg';
   }
 }

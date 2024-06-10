@@ -22,13 +22,13 @@ const NewsItem = ({news}: NewsItemProps) => {
         commonStyles.paddingVertical8,
         styles.card,
       ]}>
-      {/* <Image source={{uri: news.image}} style={[styles.image]} /> */}
+      <Image source={{uri: news.image}} style={[styles.image]} />
       <View style={[commonStyles.flex1, commonStyles.marginStart16]}>
         <Text style={[styles.title]} numberOfLines={2}>
-          {news.title}
+          {news.headline}
         </Text>
         <Text style={[styles.description]} numberOfLines={2}>
-          {news.description}
+          {news.abstract}
         </Text>
       </View>
     </View>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     height: 64,
     width: 64,
     borderRadius: 8,
+    objectFit: 'contain',
   },
   title: {
     fontSize: 16,

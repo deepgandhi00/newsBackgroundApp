@@ -1,12 +1,9 @@
-import SQLite, {
-  Database,
-  Result,
-  Transaction,
-} from 'react-native-sqlite-storage';
+import SQLite, {Database, Result} from 'react-native-sqlite-storage';
 import {ResponseModel} from '../../domain/entities/generics/genericResponseModel.entity';
 import {News} from '../../domain/entities/news/news.entity';
 import {NewsResponse} from '../../domain/entities/news/newsResponse.entity';
 import {injectable} from 'inversify';
+import { DB_NAME } from '../../application/utils/constants';
 
 SQLite.enablePromise(true);
 
@@ -18,7 +15,7 @@ export default class SqlLiteHelper {
   // opening the db
   async open() {
     return new Promise((resolve, reject) => {
-      SQLite.openDatabase({name: 'myDB', location: 'default'})
+      SQLite.openDatabase({name: DB_NAME, location: 'default'})
         .then((db: Database) => {
           this.db = db;
           resolve(db);
@@ -37,7 +34,7 @@ export default class SqlLiteHelper {
       } else {
         this.db
           .executeSql(
-            'CREATE TABLE IF NOT EXISTS news(id INTEGER PRIMARY KEY AUTOINCREMENT, author TEXT, title TEXT NOT NULL, description TEXT, url TEXT, image TEXT)',
+            'CREATE TABLE IF NOT EXISTS news(id INTEGER PRIMARY KEY AUTOINCREMENT, author TEXT, headline TEXT NOT NULL, abstract TEXT, article_uri TEXT, image TEXT)',
           )
           .then((res: any) => {
             resolve('Created');
@@ -52,7 +49,7 @@ export default class SqlLiteHelper {
   // inserting list of news inside db
   async insertNews(newsList: Array<News> = []) {
     const insertQuery =
-      'INSERT INTO news (author, title, description, url, image) VALUES (?, ?, ?, ?, ?)';
+      'INSERT INTO news (author, headline, abstract, article_uri, image) VALUES (?, ?, ?, ?, ?)';
     return new Promise((resolve, reject) => {
       if (!this.db) {
         reject('db is not available');
@@ -64,9 +61,9 @@ export default class SqlLiteHelper {
             this.db
               ?.executeSql(insertQuery, [
                 news.author,
-                news.title,
-                news.description,
-                news.url,
+                news.headline,
+                news.abstract,
+                news.article_uri,
                 news.image,
               ])
               .then(() => {

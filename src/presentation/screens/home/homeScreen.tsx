@@ -14,7 +14,7 @@ const HomeScreen = (): React.ReactElement => {
       <SafeAreaView style={[commonStyles.container]}>
         <View style={[commonStyles.container]}>
           <FlatList
-            keyExtractor={item => item.id?.toString() || item.url}
+            keyExtractor={item => item.article_uri}
             data={fetchedNews}
             renderItem={({item, index}) => {
               return <NewsItem news={item} />;

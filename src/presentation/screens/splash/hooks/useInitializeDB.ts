@@ -32,7 +32,10 @@ export const useInitializeDB = () => {
 
   useEffect(() => {
     if (isInitialized) {
-      navigation.navigate(PublicRoutes.Home);
+      navigation.reset({
+        index: 0,
+        routes: [{name: PublicRoutes.Home}],
+      });
     }
   }, [isInitialized, navigation]);
 };

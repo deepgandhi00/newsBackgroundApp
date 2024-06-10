@@ -10,7 +10,7 @@
 <!-- Body -->
 
 ```sh
-git clone https://github.com/deepgandhi00/newsBackgroundApp
+git clone https://github.com/deepgandhi00/newsBackgroundApp.git
 cd backgroundApp
 npx react-native run-android
 ```
